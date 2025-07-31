@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using POSSEDQI.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -39,6 +40,20 @@ namespace POSSEDQI
                 LoginError.Visibility = Visibility.Visible;
             }
         }
+
+        //زر نقطة البيع
+        private void SalesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new SalesView();
+        }
+
+
+        //زر المخزون
+        private void InventoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new InventoryView();
+        }
+
 
         // زر الخروج
         private void Exit_Click(object sender, RoutedEventArgs e)
