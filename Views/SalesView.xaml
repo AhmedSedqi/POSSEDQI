@@ -30,12 +30,12 @@
             <ScrollViewer Grid.Column="0" Margin="0,45,5,0">
                 <WrapPanel x:Name="ProductsPanel" ItemWidth="150" ItemHeight="180">
                     <!-- بطاقة منتج كمثال -->
-                    <Border Width="140" Height="160" Background="#1e293b" CornerRadius="10" Margin="5">
+                    <Border Width="140" Height="160" Background="White" CornerRadius="10" Margin="5">
                         <StackPanel>
                             <Image Source="/Icons/sample-product.jpg" Height="80" Margin="5" Stretch="Uniform"/>
-                            <TextBlock Text="منتج 1" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
-                            <TextBlock Text="الكمية: 10" Foreground="White" FontSize="12" TextAlignment="Center"/>
-                            <TextBlock Text="السعر: 15.00 درهم" Foreground="White" FontSize="12" TextAlignment="Center"/>
+                            <TextBlock Text="منتج 1" Foreground="Black" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+                            <TextBlock Text="الكمية: 10" Foreground="Black" FontSize="15" FontWeight="Bold" TextAlignment="Center"/>
+                            <TextBlock Text="السعر: 15.00 درهم" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
                         </StackPanel>
                     </Border>
                 </WrapPanel>

@@ -60,5 +60,12 @@ namespace POSSEDQI
         {
             Application.Current.Shutdown();
         }
+
+        //زر الفواتير
+        private void InvoicesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new InvoicesView();
+        }
+
     }
 }

@@ -71,7 +71,8 @@
 
                     </StackPanel>
                 </Button>
-                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White"
+                        FontWeight="Bold" BorderThickness="0" Click="InvoicesButton_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="الفواتير" VerticalAlignment="Center" 
                                    Margin="20,0,10,0" FontSize="24"/>
