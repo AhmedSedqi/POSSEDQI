@@ -11,29 +11,28 @@ using System.Windows.Shapes;
 
 namespace POSSEDQI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        // كلمة السر المسموح بها
+        private string CorrectPassword = "1234";
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private string CorrectPassword = "1210102365"; // الرمز السري المعين حاليا يمكن تغيره لاحقا
-
+        // زر الدخول
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordBox.Password == CorrectPassword)
+            string password = PasswordBox.Password;
+
+            if (password == "1234") // الرقم السري الذي تحدده
             {
                 LoginPanel.Visibility = Visibility.Collapsed;
-                MainContent.Visibility = Visibility.Visible;
+                MainUI.Visibility = Visibility.Visible;
+
+                // تحميل SalesView
+                MainContent.Content = new Views.SalesView();
             }
             else
             {
@@ -41,5 +40,10 @@ namespace POSSEDQI
             }
         }
 
+        // زر الخروج
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

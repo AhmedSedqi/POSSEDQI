@@ -8,77 +8,130 @@
         Background="#0f172a" 
         WindowStartupLocation="CenterScreen">
 
+    <!-- شبكة المحتوى الرئيسية -->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <DockPanel Grid.ColumnSpan="2" Background="#162033" LastChildFill="True">
-            <TextBlock Text="POSSEDQI - إدارة المبيعات"
-                       Foreground="White" FontSize="16" FontWeight="Bold"
-                       VerticalAlignment="Center" Margin="20,0"/>
-        </DockPanel>
-
-        <!-- Sidebar -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Background="#1e293b" Padding="10" VerticalAlignment="Stretch">
-            <StackPanel>
-                <Button Content="نقطة البيع" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                <Button Content="المخزون" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                <Button Content="الفواتير" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                <Button Content="الديون" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                <Button Content="الزبائن" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                <Button Content="التقارير" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-                <Button Content="الزكاة" Height="40" Margin="0,5"
-                        Background="#0285c7" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
-            </StackPanel>
-
-            <!-- زر الخروج -->
-            <StackPanel VerticalAlignment="Bottom" Margin="0,20,0,0">
-                <Button Content="خروج" Height="40"
-                        Background="Crimson" Foreground="White"
-                        FontWeight="Bold" BorderThickness="0" Cursor="Hand"
-                        Click="Exit_Click"/>
-            </StackPanel>
-        </StackPanel>
-
-        <!-- Main Content -->
-        <ContentControl x:Name="MainContent"
-                        Grid.Row="1" Grid.Column="1"
-                        Margin="10" Background="#293548"/>
         <!-- واجهة تسجيل الدخول -->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-            <!-- عنوان الواجهة -->
-            <TextBlock Text="تسجيل الدخول" Foreground="White" FontSize="18" Margin="0,0,0,20" TextAlignment="Center"/>
+        <Grid x:Name="LoginPanel" Background="#0f172a" Visibility="Visible" Panel.ZIndex="2">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+                <!-- عنوان شاشة الدخول -->
+                <TextBlock Text="تسجيل الدخول" Foreground="White" FontSize="20" Margin="0,0,0,20"
+                           TextAlignment="Center" VerticalAlignment="Center"/>
 
-            <!-- خانة إدخال كلمة السر -->
-            <PasswordBox x:Name="PasswordBox" Height="30" FontSize="16" Margin="0,0,0,10"/>
+                <!-- خانة كلمة السر -->
+                <PasswordBox x:Name="PasswordBox" Height="30" FontSize="16" Margin="0,0,0,10"/>
 
-            <!-- زر الدخول -->
-            <Button Content="دخول" Click="Login_Click" Background="#38bef8" Foreground="White" FontWeight="Bold"/>
+                <!-- زر الدخول -->
+                <Button Content="دخول" Click="Login_Click" Background="#38bef8" Foreground="White"
+                        FontWeight="Bold" Height="50" FontSize="24"/>
 
-            <!-- رسالة خطأ تظهر فقط عند الخطأ -->
-            <TextBlock x:Name="LoginError" Text="كلمة السر غير صحيحة"
-                   Foreground="Red" Visibility="Collapsed" FontSize="12" Margin="0,10,0,0" TextAlignment="Center"/>
-        </StackPanel>
+                <!-- رسالة الخطأ -->
+                <TextBlock x:Name="LoginError" Text="كلمة السر غير صحيحة"
+                           Foreground="Red" Visibility="Collapsed" FontSize="35" Margin="0,10,0,0" TextAlignment="Center"/>
+            </StackPanel>
+        </Grid>
 
+        <!-- الواجهة الرئيسية للتطبيق -->
+        <Grid x:Name="MainUI" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- الشريط العلوي -->
+            <DockPanel Grid.ColumnSpan="2" Background="#162033" LastChildFill="True">
+                <TextBlock Text="POSSEDQI - إدارة المبيعات" HorizontalAlignment="Center"
+                           Foreground="White" FontSize="16" FontWeight="Bold"
+                           VerticalAlignment="Center" Margin="20,0"/>
+            </DockPanel>
+
+            <!-- الشريط الجانبي -->
+            <StackPanel Grid.Row="1" Grid.Column="1" Background="#1e293b" Margin="0" VerticalAlignment="Stretch">
+                <!-- أزرار التنقل -->
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="نقطة البيع" VerticalAlignment="Center" 
+                                   Margin="0,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/pos.png" Width="30" Height="30"/>
+                        
+                    </StackPanel>
+                </Button>
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="المخزون" VerticalAlignment="Center" 
+                                   Margin="20,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/truck.png" Width="30" Height="30"/>
+
+                    </StackPanel>
+                </Button>
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="الفواتير" VerticalAlignment="Center" 
+                                   Margin="20,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/bill.png" Width="30" Height="30"/>
+
+                    </StackPanel>
+                </Button>
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="الديون" VerticalAlignment="Center" 
+                                   Margin="24,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/user-minus.png" Width="30" Height="30"/>
+
+                    </StackPanel>
+                </Button>
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="الزبائن" VerticalAlignment="Center" 
+                                   Margin="20,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/users.png" Width="30" Height="30"/>
+
+                    </StackPanel>
+                </Button>
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="التقارير" VerticalAlignment="Center" 
+                                   Margin="20,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/chart-no-axes-combined.png" Width="30" Height="30"/>
+
+                    </StackPanel>
+                </Button>
+                <Button Height="60" Margin="10,5" Background="#0285c7" Foreground="White" FontWeight="Bold" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="الزكاة" VerticalAlignment="Center" 
+                                    Margin="20,0,10,0" FontSize="24"/>
+                        <Image Source="/Icons/hand-coins.png" Width="30" Height="30"/>
+
+                    </StackPanel>
+                </Button>
+                
+
+                <!-- زر الخروج -->
+                
+                <StackPanel VerticalAlignment="Bottom" Margin="0,160,0,0">
+                    <Button  Height="60" Margin="10,5"
+                            Background="Crimson" Foreground="White" 
+                            FontWeight="Bold" BorderThickness="0" Cursor="Hand"
+                            Click="Exit_Click">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="خروج" VerticalAlignment="Center" 
+                            Margin="20,0,10,0" FontSize="24"/>
+                            <Image Source="/Icons/log-out.png" Width="30" Height="30"/>
+
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- منطقة عرض المحتوى -->
+            <ContentControl x:Name="MainContent"
+                            Grid.Row="1" Grid.Column="0"
+                            Margin="10" Background="#293548"/>
+        </Grid>
     </Grid>
 </Window>
