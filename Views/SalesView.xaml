@@ -2,35 +2,34 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="#0f172a">
-    <Grid Margin="10">
+    <Grid Margin="1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!-- الشريط العلوي -->
             <RowDefinition Height="*"/>
-            <!-- المحتوى -->
+            <!-- المحتوى الرئيسي -->
         </Grid.RowDefinitions>
 
-        <!-- شريط الفئات العلوي -->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <Button Content="الكل" Margin="5" Padding="10,5" FontSize="26" FontFamily="Calibri"
-                    Background="#0285c7" Foreground="White"/>
-            <Button Content="+" FontSize="30" FontFamily="Calibri" Margin="5" Padding="10,5"
-                    Background="Green" Foreground="White" Width="40"/>
-            <Button Content="-" FontSize="30" FontFamily="Calibri" Margin="5" Padding="10,5" 
-                    Background="Crimson" Foreground="White" Width="40"/>
-        </StackPanel>
-
-        <!-- المحتوى الرئيسي -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
+                <!-- عمود عرض المنتجات -->
                 <ColumnDefinition Width="1*"/>
+                <!-- عمود عرض الفاتورة -->
             </Grid.ColumnDefinitions>
 
-            <!-- عرض المنتجات -->
-            <ScrollViewer Grid.Column="0">
-                <WrapPanel x:Name="ProductsPanel" ItemWidth="150" ItemHeight="180" Margin="0,0,10,0">
-                    <!-- نموذج بطاقة منتج -->
+            <!-- شريط الفئات داخل عمود المنتجات فقط -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="40" Background="#162033" VerticalAlignment="Top" Margin="0,0,0,2" >
+                <Button Content="الكل" Margin="5,5" Padding="10,2" Background="#0285c7" 
+                        FontSize="20" Foreground="White" FontWeight="Bold"/>
+                <Button Content="إضافة" Margin="5,5" Padding="10,2" Background="Green" 
+                        FontSize="20" Foreground="White" FontWeight="Bold"/>
+                <Button Content="حذف" Margin="5,5" Padding="10,2" Background="Crimson" 
+                        FontSize="20" Foreground="White" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- مجال عرض المنتجات أسفل شريط الفئات -->
+            <ScrollViewer Grid.Column="0" Margin="0,45,5,0">
+                <WrapPanel x:Name="ProductsPanel" ItemWidth="150" ItemHeight="180">
+                    <!-- بطاقة منتج كمثال -->
                     <Border Width="140" Height="160" Background="#1e293b" CornerRadius="10" Margin="5">
                         <StackPanel>
                             <Image Source="/Icons/sample-product.jpg" Height="80" Margin="5" Stretch="Uniform"/>
@@ -81,7 +80,8 @@
                         <TextBlock Text="رقم الفاتورة" Foreground="White" Margin="0,0,0,3"
                                    HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
                         <TextBox IsReadOnly="True" Background="#293548" Foreground="White" FontWeight="Bold"
-                                 Text="123456" Padding="5" HorizontalContentAlignment="Right"/> <!-- سنبرمج لاحقا عملية ظهور رقم الفاتورة عوض الرقم الافتراضي -->
+                                 Text="123456" Padding="5" HorizontalContentAlignment="Right"/>
+                        <!-- سنبرمج لاحقا عملية ظهور رقم الفاتورة عوض الرقم الافتراضي -->
                     </StackPanel>
 
                     <!-- سطر 4: جدول الفاتورة -->
@@ -110,13 +110,13 @@
                         </StackPanel>
 
                         <!-- المبلغ المدفوع -->
-                        <StackPanel Width="100" Margin="150,0,0,0">
+                        <StackPanel Width="100" Margin="170,0,0,0">
                             <TextBlock Text="المبلغ المدفوع" Foreground="White" Margin="0,0,0,3"
                                        FontSize="14" HorizontalAlignment="Right"/>
                             <TextBox FontSize="14" Padding="5" HorizontalContentAlignment="Right"/>
                         </StackPanel>
 
-                        
+
                     </StackPanel>
 
                     <!-- سطر 6: أزرار التحكم -->
@@ -130,7 +130,6 @@
                     </StackPanel>
                 </Grid>
             </Border>
-
         </Grid>
     </Grid>
 </UserControl>

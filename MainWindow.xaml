@@ -19,7 +19,7 @@
                            TextAlignment="Center" VerticalAlignment="Center"/>
 
                 <!-- خانة كلمة السر -->
-                <PasswordBox x:Name="PasswordBox" Height="30" FontSize="16" Margin="0,0,0,10"/>
+                <PasswordBox x:Name="PasswordBox" Height="30" FontSize="16" Margin="0,0,0,10" VerticalContentAlignment="Center"/>
 
                 <!-- زر الدخول -->
                 <Button Content="دخول" Click="Login_Click" Background="#38bef8" Foreground="White"
