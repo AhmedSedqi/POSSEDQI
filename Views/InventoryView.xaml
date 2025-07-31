@@ -68,10 +68,10 @@
                     <Border Width="200" Height="250" Background="#293548" Margin="5" CornerRadius="10">
                         <StackPanel Margin="10">
                             <Image Source="/Icons/sample-product.jpg" Height="100" Stretch="Uniform"/>
-                            <TextBlock Text="اسم المنتج" FontWeight="Bold" Foreground="White" Margin="0,10,0,0"/>
-                            <TextBlock Text="الوصف المختصر" Foreground="LightGray"/>
+                            <TextBlock Text="اسم المنتج" FontWeight="Bold" FontSize="14" TextAlignment="Center" Foreground="White" Margin="0,10,0,0"/>
+                            <TextBlock Text="الوصف المختصر" Foreground="LightGray" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
                             <TextBlock Text="الكمية: 10" Foreground="White" Margin="0,5,0,0"/>
-                            <TextBlock Text="سعر الشراء: 50 درهم" Foreground="White"/>
+                            <TextBlock Text="سعر الشراء: 50 درهم" Foreground="White" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
                         </StackPanel>
                     </Border>
 

@@ -53,10 +53,10 @@
     <Resource Include="Icons\print.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\sample-product.jpg">
+    <Resource Include="Icons\delete.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\delete.png">
+    <Resource Include="Icons\sample-product.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\truck.png">
