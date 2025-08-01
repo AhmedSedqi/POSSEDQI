@@ -20,20 +20,22 @@
         <StackPanel Orientation="Horizontal" Margin="0,0,0,15" HorizontalAlignment="Left" VerticalAlignment="Top">
             <!-- مربع البحث -->
             <TextBox Name="SearchBox"
-                     Width="200" Height="30" Margin="0,0,10,0"
+                     Width="200" Height="30" Margin="0,0,100,0"
                      VerticalContentAlignment="Center"
-                     Text="ابحث برقم الفاتورة"
-                     Foreground="Gray"
+                     Text="ابحث برقم الفاتورة" HorizontalContentAlignment="Right"
+                     Foreground="Gray" FontSize="18"
                      GotFocus="SearchBox_GotFocus"
                      LostFocus="SearchBox_LostFocus"/>
 
-            <!-- من التاريخ -->
-            <TextBlock Text="من التاريخ:" VerticalAlignment="Center" Margin="10,0,5,0"/>
-            <DatePicker Name="StartDate" Width="140" Height="30" Margin="0,0,10,0"/>
-
             <!-- إلى التاريخ -->
-            <TextBlock Text="إلى التاريخ:" VerticalAlignment="Center" Margin="10,0,5,0"/>
-            <DatePicker Name="EndDate" Width="140" Height="30" Margin="0,0,10,0"/>
+            <DatePicker Name="StartDate" Width="140" Height="30" Margin="10,0,15,0" />
+            <TextBlock Text="إلى التاريخ" VerticalAlignment="Center" Margin="0,0,10,0"
+                       Foreground="White" FontSize="18" FontWeight="Black"/>
+
+            <!-- من التاريخ -->
+            <DatePicker Name="EndDate" Width="140" Height="30"  Margin="10,0,15,0"/>
+            <TextBlock Text="من التاريخ" VerticalAlignment="Center" Margin="0,0,10,0"
+                       Foreground="White" FontSize="18" FontWeight="Bold"/>
         </StackPanel>
 
         <!-- ✅ المحتوى الرئيسي (جدول الفواتير + تفاصيلها) -->
@@ -49,20 +51,84 @@
             <DataGrid Grid.Column="0" Name="InvoiceDataGrid"
                       AutoGenerateColumns="False"
                       CanUserAddRows="False"
-                      Margin="0,0,15,0"
+                      Margin="0,0,15,0" 
                       HeadersVisibility="Column"
                       IsReadOnly="True"
                       SelectionMode="Single"
                       GridLinesVisibility="All">
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="رقم الفاتورة" Binding="{Binding InvoiceNumber}" Width="*" />
-                    <DataGridTextColumn Header="اسم الزبون" Binding="{Binding CustomerName}" Width="*" />
-                    <DataGridTextColumn Header="تاريخ الفاتورة" Binding="{Binding InvoiceDate}" Width="*" />
-                    <DataGridTextColumn Header="إجمالي الفاتورة" Binding="{Binding TotalAmount}" Width="*" />
-                    <DataGridTextColumn Header="المدفوع" Binding="{Binding PaidAmount}" Width="*" />
-                    <DataGridTextColumn Header="الباقي" Binding="{Binding Remaining}" Width="*" />
-                    <DataGridTextColumn Header="حالة الفاتورة" Binding="{Binding Status}" Width="*" />
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="حالة الفاتورة" Binding="{Binding Status}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="الباقي" Binding="{Binding Remaining}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="المدفوع" Binding="{Binding PaidAmount}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="إجمالي الفاتورة" Binding="{Binding TotalAmount}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="اسم الزبون"  Binding="{Binding CustomerName}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="تاريخ الفاتورة" Binding="{Binding InvoiceDate}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="رقم الفاتورة"  Binding="{Binding InvoiceNumber}" Width="*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -79,7 +145,12 @@
         <!-- ✅ الأزرار -->
         <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,15,0,0">
             <Button Content="🖊 تعديل الحالة" Width="120" Height="32" Margin="0,0,10,0"/>
-            <Button Content="🗑 حذف المحددة" Width="120" Height="32" Margin="0,0,10,0"/>
+            <Button Width="100" Height="32" Margin="0,0,100,0" Background="Red" Foreground="White" ToolTip="حذف الفاتورة من جدول الفواتير">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="حذف الفاتورة" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Black"/>
+                    <Image Source="/Icons/delete.png" Width="20" Height="20" />
+                </StackPanel>
+            </Button>
             <Button Content="🖨 طباعة الفاتورة" Width="140" Height="32" Margin="0,0,10,0"/>
         </StackPanel>
     </Grid>
