@@ -17,13 +17,23 @@
             </Grid.ColumnDefinitions>
 
             <!-- شريط الفئات داخل عمود المنتجات فقط -->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="40" Background="#162033" VerticalAlignment="Top" Margin="0,0,0,2" >
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="40" Background="#162033" VerticalAlignment="Top" Margin="0,0,0,2">
+
+                <!-- زر الكل -->
                 <Button Content="الكل" Margin="5,5" Padding="10,2" Background="#0285c7" 
-                        FontSize="20" Foreground="White" FontWeight="Bold"/>
-                <Button Content="إضافة" Margin="5,5" Padding="10,2" Background="Green" 
-                        FontSize="20" Foreground="White" FontWeight="Bold"/>
+            FontSize="20" Foreground="White" FontWeight="Bold"/>
+
+                <!-- الحاوية التي سنضيف إليها الأزرار من الكود -->
+                <StackPanel x:Name="CategoriesPanel" Orientation="Horizontal" />
+
+                <!-- زر الإضافة -->
+                <Button x:Name="AddCategoryButton" Content="إضافة" Margin="5,5" Padding="10,2" Background="Green"
+                            Click="AddCategoryButton_Click" 
+                            FontSize="20" Foreground="White" FontWeight="Bold"/>
+
+                <!-- زر الحذف -->
                 <Button Content="حذف" Margin="5,5" Padding="10,2" Background="Crimson" 
-                        FontSize="20" Foreground="White" FontWeight="Bold"/>
+            FontSize="20" Foreground="White" FontWeight="Bold"/>
             </StackPanel>
 
             <!-- مجال عرض المنتجات أسفل شريط الفئات -->
