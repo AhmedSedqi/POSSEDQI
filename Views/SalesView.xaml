@@ -17,27 +17,25 @@
             </Grid.ColumnDefinitions>
 
             <!-- شريط الفئات داخل عمود المنتجات فقط -->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="40" Background="#162033" VerticalAlignment="Top" Margin="0,0,0,2">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="45" Background="#162033" 
+                        VerticalAlignment="Top" Margin="0,0,0,5">
 
                 <!-- زر الكل -->
-                <Button Content="الكل" Margin="5,5" Padding="10,2" Background="#0285c7" 
-            FontSize="20" Foreground="White" FontWeight="Bold"/>
+                <Button Content="الكل" Margin="5,5" Padding="5,2" Background="#0285c7" 
+            FontSize="14" Foreground="White" FontWeight="Bold" Height="30"/>
 
                 <!-- الحاوية التي سنضيف إليها الأزرار من الكود -->
                 <StackPanel x:Name="CategoriesPanel" Orientation="Horizontal" />
 
                 <!-- زر الإضافة -->
-                <Button x:Name="AddCategoryButton" Content="إضافة" Margin="5,5" Padding="10,2" Background="Green"
-                            Click="AddCategoryButton_Click" 
-                            FontSize="20" Foreground="White" FontWeight="Bold"/>
+                <Button x:Name="AddCategoryButton" Content="إضافة" Margin="5,2" Padding="5,2" Background="Green"
+                            Click="AddCategoryButton_Click" Height="30"
+                            FontSize="14" Foreground="White" FontWeight="Bold"/>
 
-                <!-- زر الحذف -->
-                <Button Content="حذف" Margin="5,5" Padding="10,2" Background="Crimson" 
-            FontSize="20" Foreground="White" FontWeight="Bold"/>
             </StackPanel>
 
             <!-- مجال عرض المنتجات أسفل شريط الفئات -->
-            <ScrollViewer Grid.Column="0" Margin="0,45,5,0">
+            <ScrollViewer Grid.Column="0" Margin="0,50,5,0">
                 <WrapPanel x:Name="ProductsPanel" ItemWidth="150" ItemHeight="180">
                     <!-- بطاقة منتج كمثال -->
                     <Border Width="140" Height="160" Background="White" CornerRadius="10" Margin="5">

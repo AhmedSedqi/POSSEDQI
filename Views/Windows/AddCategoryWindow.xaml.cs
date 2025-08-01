@@ -53,7 +53,7 @@ namespace POSSEDQI.Views.Windows
             if (CategoryNameTextBox.Text == "اسم الفئة")
             {
                 CategoryNameTextBox.Text = "";
-                CategoryNameTextBox.Foreground = System.Windows.Media.Brushes.White;
+                CategoryNameTextBox.Foreground = System.Windows.Media.Brushes.Black;
             }
         }
 

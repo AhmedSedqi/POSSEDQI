@@ -39,12 +39,12 @@
                 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!-- الشريط العلوي -->
-            <DockPanel Grid.ColumnSpan="2" Background="#162033" LastChildFill="True">
+            <DockPanel Grid.ColumnSpan="2" Background="Orange" LastChildFill="True">
                 <TextBlock Text="POSSEDQI - إدارة المبيعات" HorizontalAlignment="Center"
                            Foreground="White" FontSize="16" FontWeight="Bold"
                            VerticalAlignment="Center" Margin="20,0"/>
