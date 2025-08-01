@@ -5,69 +5,77 @@
     <Grid Margin="1">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <!-- المحتوى الرئيسي -->
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
-                <!-- عمود عرض المنتجات -->
+                <!-- عمود المنتجات -->
                 <ColumnDefinition Width="1*"/>
-                <!-- عمود عرض الفاتورة -->
+                <!-- عمود الفاتورة -->
             </Grid.ColumnDefinitions>
 
-            <!-- شريط الفئات داخل عمود المنتجات فقط -->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="45" Background="#162033" 
-                        VerticalAlignment="Top" Margin="0,0,0,5">
+            <!-- العمود الأول: المنتجات مع الفئات -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- سطر الفئات -->
+                    <RowDefinition Height="*"/>
+                    <!-- سطر عرض المنتجات -->
+                </Grid.RowDefinitions>
 
-                <!-- زر الكل -->
-                <Button Content="الكل" Margin="5,5" Padding="5,2" Background="#0285c7" 
-            FontSize="14" Foreground="White" FontWeight="Bold" Height="30"/>
+                <!-- سطر الفئات مع تمرير أفقي -->
+                <Grid Grid.Row="0" Height="60" Margin="0,0,0,5" Background="#162033">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <!-- الحاوية التي سنضيف إليها الأزرار من الكود -->
-                <StackPanel x:Name="CategoriesPanel" Orientation="Horizontal" />
+                    <!-- زر "الكل" -->
+                    <Button Grid.Column="0" Content="عرض الكل" Margin="5,5" Padding="5,2" Background="Green"
+                            FontSize="14" Foreground="White" FontWeight="Bold" Height="30"
+                            VerticalAlignment="Center"/>
 
-                <!-- زر الإضافة -->
-                <Button x:Name="AddCategoryButton" Content="إضافة" Margin="5,2" Padding="5,2" Background="Green"
-                            Click="AddCategoryButton_Click" Height="30"
-                            FontSize="14" Foreground="White" FontWeight="Bold"/>
+                    <!-- ScrollViewer للفئات -->
+                    <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Center">
+                        <StackPanel x:Name="CategoriesPanel" Orientation="Horizontal" />
+                    </ScrollViewer>
 
-            </StackPanel>
+                    <!-- زر "إضافة الفئة" -->
+                    <Button Grid.Column="2" x:Name="AddCategoryButton" Content="إضافة" Margin="5,2" Padding="5,2"
+                            Background="Green" Click="AddCategoryButton_Click"
+                            FontSize="14" Foreground="White" FontWeight="Bold" Height="30"
+                            VerticalAlignment="Center"/>
+                </Grid>
 
-            <!-- مجال عرض المنتجات أسفل شريط الفئات -->
-            <ScrollViewer Grid.Column="0" Margin="0,50,5,0">
-                <WrapPanel x:Name="ProductsPanel" ItemWidth="150" ItemHeight="180">
-                    <!-- بطاقة منتج كمثال -->
-                    <Border Width="140" Height="160" Background="White" CornerRadius="10" Margin="5">
-                        <StackPanel>
-                            <Image Source="/Icons/sample-product.jpg" Height="80" Margin="5" Stretch="Uniform"/>
-                            <TextBlock Text="منتج 1" Foreground="Black" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
-                            <TextBlock Text="الكمية: 10" Foreground="Black" FontSize="15" FontWeight="Bold" TextAlignment="Center"/>
-                            <TextBlock Text="السعر: 15.00 درهم" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
-                        </StackPanel>
-                    </Border>
-                </WrapPanel>
-            </ScrollViewer>
+                <!-- سطر عرض المنتجات -->
+                <ScrollViewer Grid.Row="1" Margin="0,5,5,0">
+                    <WrapPanel x:Name="ProductsPanel" ItemWidth="150" ItemHeight="180">
+                        <Border Width="140" Height="160" Background="White" CornerRadius="7" Margin="5">
+                            <StackPanel>
+                                <Image Source="/Icons/sample-product.jpg" Height="80" Margin="5" Stretch="Uniform"/>
+                                <TextBlock Text="منتج 1" Foreground="Black" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+                                <TextBlock Text="الكمية: 10" Foreground="Black" FontSize="15" FontWeight="Bold" TextAlignment="Center"/>
+                                <TextBlock Text="السعر: 15.00 درهم" Foreground="Black" FontSize="14" FontWeight="Bold" TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+                </ScrollViewer>
+            </Grid>
 
-            <!-- الفاتورة -->
+            <!-- العمود الثاني: واجهة الفاتورة كما هي بدون تعديل -->
             <Border Grid.Column="1" Background="#162033" Padding="10" Margin="10,0,0,0" CornerRadius="10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <!-- سطر الزبائن + حقل الاسم -->
                         <RowDefinition Height="Auto"/>
-                        <!-- سطر التاريخ -->
                         <RowDefinition Height="Auto"/>
-                        <!-- سطر رقم الفاتورة -->
                         <RowDefinition Height="*"/>
-                        <!-- جدول الفاتورة -->
                         <RowDefinition Height="Auto"/>
-                        <!-- المبلغ المدفوع والمبلغ المتبقي -->
                         <RowDefinition Height="Auto"/>
-                        <!-- أزرار البيع -->
                     </Grid.RowDefinitions>
 
-                    <!-- سطر 1: زر الزبائن + حقل كتابة الاسم -->
                     <DockPanel Grid.Row="0" Margin="0,0,0,10" LastChildFill="True">
                         <Button Width="35" Height="35" Background="#0285c7" DockPanel.Dock="Right" Margin="5,0,0,0" ToolTip="اختيار زبون">
                             <Image Source="/Icons/users.png" Width="20" Height="20"/>
@@ -76,28 +84,24 @@
                                  HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Height="33"/>
                     </DockPanel>
 
-                    <!-- سطر 2: تحديد التاريخ -->
                     <StackPanel Grid.Row="1" Margin="0,0,0,10">
                         <TextBlock Text="التاريخ" HorizontalAlignment="Right" FontWeight="Bold"
                                    FontSize="14" Foreground="White" Margin="0,0,0,3"/>
                         <DatePicker/>
                     </StackPanel>
 
-                    <!-- سطر 3: رقم الفاتورة -->
                     <StackPanel Grid.Row="2" Margin="0,0,0,10">
                         <TextBlock Text="رقم الفاتورة" Foreground="White" Margin="0,0,0,3"
                                    HorizontalAlignment="Right" FontWeight="Bold" FontSize="14"/>
                         <TextBox IsReadOnly="True" Background="#293548" Foreground="White" FontWeight="Bold"
                                  Text="123456" Padding="5" HorizontalContentAlignment="Right"/>
-                        <!-- سنبرمج لاحقا عملية ظهور رقم الفاتورة عوض الرقم الافتراضي -->
                     </StackPanel>
 
-                    <!-- سطر 4: جدول الفاتورة -->
                     <Border Grid.Row="3" Background="#293548" CornerRadius="5" Padding="5" Margin="0,0,0,10">
                         <DataGrid x:Name="InvoiceDataGrid" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False"
-                      CanUserResizeRows="False" GridLinesVisibility="None" Background="#293548" Foreground="White"
-                      RowBackground="#1e293b" AlternatingRowBackground="#162033" BorderThickness="0"
-                      SelectionMode="Single" FontSize="14" Height="200">
+                                  CanUserResizeRows="False" GridLinesVisibility="None" Background="#293548" Foreground="White"
+                                  RowBackground="#1e293b" AlternatingRowBackground="#162033" BorderThickness="0"
+                                  SelectionMode="Single" FontSize="14" Height="200">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="المنتج" Binding="{Binding ProductName}" Width="*"/>
                                 <DataGridTextColumn Header="الكمية" Binding="{Binding Quantity}" Width="80" />
@@ -107,9 +111,7 @@
                         </DataGrid>
                     </Border>
 
-                    <!-- سطر 5: المبلغ المدفوع والمبلغ المتبقي -->
-                    <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0" >
-                        <!-- المبلغ المتبقي -->
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
                         <StackPanel Width="100">
                             <TextBlock Text="المبلغ المتبقي" Foreground="White" Margin="0,0,0,3"
                                        FontSize="14" HorizontalAlignment="Right"/>
@@ -117,18 +119,14 @@
                                      HorizontalContentAlignment="Right" FontWeight="Bold" Padding="5" />
                         </StackPanel>
 
-                        <!-- المبلغ المدفوع -->
                         <StackPanel Width="100" Margin="170,0,0,0">
                             <TextBlock Text="المبلغ المدفوع" Foreground="White" Margin="0,0,0,3"
                                        FontSize="14" HorizontalAlignment="Right"/>
                             <TextBox FontSize="14" Padding="5" HorizontalContentAlignment="Right"/>
                         </StackPanel>
-
-
                     </StackPanel>
 
-                    <!-- سطر 6: أزرار التحكم -->
-                    <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="إكمال البيع" Width="100" Height="35" Background="Green" 
                                 FontSize="17" Foreground="White" Margin="10"/>
                         <Button Content="إلغاء البيع" Width="100" Height="35" Background="Crimson" 
