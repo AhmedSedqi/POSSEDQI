@@ -143,15 +143,27 @@
         </Grid>
 
         <!-- ✅ الأزرار -->
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,15,0,0">
-            <Button Content="🖊 تعديل الحالة" Width="120" Height="32" Margin="0,0,10,0"/>
-            <Button Width="100" Height="32" Margin="0,0,100,0" Background="Red" Foreground="White" ToolTip="حذف الفاتورة من جدول الفواتير">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,15,0,0" HorizontalAlignment="Center">
+            <Button Width="160" Height="35" Margin="0,0,20,0" Background="Green" Foreground="White" ToolTip="تعديل حالة الفاتورة">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="حذف الفاتورة" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Black"/>
-                    <Image Source="/Icons/delete.png" Width="20" Height="20" />
+                    <TextBlock Text="تعديل الحالة" VerticalAlignment="Center"
+                   FontWeight="Bold" FontSize="18" Margin="0,0,10,0"/>
+                    <Image Source="/Icons/edit.png" Width="25" Height="25" />
                 </StackPanel>
             </Button>
-            <Button Content="🖨 طباعة الفاتورة" Width="140" Height="32" Margin="0,0,10,0"/>
+            <Button Width="160" Height="35" Margin="0,0,20,0" Background="Red" Foreground="White" ToolTip="حذف الفاتورة من جدول الفواتير">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="حذف الفاتورة" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Bold"/>
+                    <Image Source="/Icons/delete.png" Width="25" Height="25" />
+                </StackPanel>
+            </Button>
+            <Button Width="160" Height="35" Margin="0,0,20,0" Background="#0285c7" Foreground="White" ToolTip="طباعة الفاتورة المحددة في الجدول">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="طباعة الفاتورة" VerticalAlignment="Center"
+                               FontWeight="Bold" FontSize="18" Margin="0,0,10,0"/>
+                    <Image Source="/Icons/print.png" Width="25" Height="25" />
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

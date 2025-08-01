@@ -53,18 +53,24 @@ namespace POSSEDQI
         {
             MainContent.Content = new InventoryView();
         }
-
-
-        // زر الخروج
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+ 
 
         //زر الفواتير
         private void InvoicesButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.Content = new InvoicesView();
+        }
+
+        //زر الزبائن
+        private void ClientsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new ClientsView();
+        }
+
+        // زر الخروج
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
     }

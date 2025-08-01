@@ -33,26 +33,26 @@
             <!-- أزرار التحكم -->
             <Button Width="100" Height="32" Margin="0,0,100,0" Background="Green" Foreground="White" ToolTip="إضافة منتج إلى المخزون">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="إضافة " VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Black"/>
+                    <TextBlock Text="إضافة " VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Bold"/>
                     <Image Source="/Icons/add.png" Width="20" Height="20" />
                 </StackPanel>
             </Button>
             <Button Width="100" Height="32" Margin="0,0,100,0" Background="Red" Foreground="White" ToolTip="حذف منتج من المخزون">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="حذف" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Black"/>
+                    <TextBlock Text="حذف" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Bold"/>
                     <Image Source="/Icons/delete.png" Width="20" Height="20" />
                 </StackPanel>
             </Button>
             <Button Width="90" Height="32" Margin="0,0,100,0" Background="Orange" Foreground="White">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="تعديل" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Black"/>
+                    <TextBlock Text="تعديل" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Bold"/>
                     <Image Source="/Icons/edit.png" Width="20" Height="20" />
                 </StackPanel>
             </Button>
 
             <Button Width="150" Height="32" Margin="0,0,10,0" Background="#0285c7" Foreground="White">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="طباعة الكتالوج" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Black"/>
+                    <TextBlock Text="طباعة الكتالوج" VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Bold"/>
                     <Image Source="/Icons/print.png" Width="20" Height="20" />
                 </StackPanel>
             </Button>
