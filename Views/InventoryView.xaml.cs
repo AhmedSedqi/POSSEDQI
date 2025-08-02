@@ -36,7 +36,7 @@ namespace POSSEDQI.Views
         {
             var window = new AddProductWindow();
             window.ShowDialog();
-            
+
 
         }
 
