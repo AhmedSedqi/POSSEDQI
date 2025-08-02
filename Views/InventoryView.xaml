@@ -31,7 +31,8 @@
             </ComboBox>
 
             <!-- أزرار التحكم -->
-            <Button Width="100" Height="32" Margin="0,0,100,0" Background="Green" Foreground="White" ToolTip="إضافة منتج إلى المخزون">
+            <Button Width="100" Height="32" Margin="0,0,100,0" Background="Green"  Click="AddProductButton_Click"
+                    Foreground="White" ToolTip="إضافة منتج إلى المخزون">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Text="إضافة " VerticalAlignment="Center" FontSize="18" Margin="0,0,10,0" FontWeight="Bold"/>
                     <Image Source="/Icons/add.png" Width="20" Height="20" />

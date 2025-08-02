@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POSSEDQI.Views.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,14 @@ namespace POSSEDQI.Views
         {
             InitializeComponent();
         }
+        //هذا هو الحدث الذي يتم استدعاؤه عند إضافة منتج
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AddProductWindow();
+            window.ShowDialog();
+
+        }
+
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {

@@ -27,5 +27,8 @@ namespace POSSEDQI.Entities
         public int CategoryId { get; set; }   // مفتاح خارجي للفئة
 
         public Category? Category { get; set; } // علاقة بالفئة
+
+        public string ImagePath { get; set; } // مسار الصورة للمنتج
+
     }
 }

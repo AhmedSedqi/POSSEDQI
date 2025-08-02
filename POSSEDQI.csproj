@@ -18,6 +18,7 @@
     <None Remove="Icons\truck.png" />
     <None Remove="Icons\user-minus.png" />
     <None Remove="Icons\users.png" />
+    <None Remove="Images\default.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +76,9 @@
     </Resource>
     <Resource Include="Icons\users.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
