@@ -1,6 +1,8 @@
-﻿using POSSEDQI.Views.Windows;
+﻿using POSSEDQI.Services;
+using POSSEDQI.Views.Windows;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace POSSEDQI.Views
 {
@@ -21,16 +22,46 @@ namespace POSSEDQI.Views
     /// </summary>
     public partial class InventoryView : UserControl
     {
+        private readonly ProductService _productService;
+
         public InventoryView()
         {
             InitializeComponent();
+            _productService = new ProductService();
+
+            LoadProducts();
         }
         //هذا هو الحدث الذي يتم استدعاؤه عند إضافة منتج
         private void AddProductButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new AddProductWindow();
             window.ShowDialog();
+            
 
+        }
+
+        private void LoadProducts()
+        {
+            var products = _productService.GetAllProducts();
+
+            // تحديث مسارات الصور لتكون صالحة للعرض (مثلاً Images/product.jpg)
+            foreach (var product in products)
+            {
+                if (!string.IsNullOrEmpty(product.ImagePath))
+                {
+                    var fullPath = Path.Combine(Directory.GetCurrentDirectory(), product.ImagePath);
+                    if (File.Exists(fullPath))
+                        product.ImagePath = "file:///" + fullPath.Replace('\\', '/');
+                    else
+                        product.ImagePath = "/Images/default.png"; // بديل افتراضي
+                }
+                else
+                {
+                    product.ImagePath = "/Images/default.png"; // بديل افتراضي
+                }
+            }
+
+            ProductsItemsControl.ItemsSource = products;
         }
 
 
