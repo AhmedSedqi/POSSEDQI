@@ -1,4 +1,5 @@
 ﻿using POSSEDQI.Data;
+using POSSEDQI.ViewModels;
 using POSSEDQI.Views.Windows;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,11 @@ namespace POSSEDQI.Views
         public SalesView()
         {
             InitializeComponent();
+            DataContext = new SalesViewModel(); // ربط ViewModel
+
         }
 
-        
+
 
 
     }

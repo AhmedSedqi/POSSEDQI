@@ -1,5 +1,5 @@
 ﻿using POSSEDQI.Data;
-using POSSEDQI.Entities;
+using POSSEDQI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

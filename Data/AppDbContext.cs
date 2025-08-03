@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using POSSEDQI.Entities;
+using POSSEDQI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +14,7 @@ namespace POSSEDQI.Data
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Customer> Customers { get; set; }
-
-        public DbSet<Invoice> Invoices { get; set; }
-
-        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

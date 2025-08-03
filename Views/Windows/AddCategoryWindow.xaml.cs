@@ -1,5 +1,7 @@
-﻿using POSSEDQI.Entities;
+﻿using POSSEDQI.Behaviors;
+using POSSEDQI.Models;
 using POSSEDQI.Services;
+using POSSEDQI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,24 +27,11 @@ namespace POSSEDQI.Views.Windows
         public AddCategoryWindow()
         {
             InitializeComponent();
-        }
-        private void CategoryNameTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (CategoryNameTextBox.Text == "اسم الفئة")
-            {
-                CategoryNameTextBox.Text = "";
-                CategoryNameTextBox.Foreground = System.Windows.Media.Brushes.Black;
-            }
-        }
+            DataContext = new AddCategoryViewModel(); // ربط ViewModel
+                                                     
 
-        private void CategoryNameTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(CategoryNameTextBox.Text))
-            {
-                CategoryNameTextBox.Text = "اسم الفئة";
-                CategoryNameTextBox.Foreground = System.Windows.Media.Brushes.Gray;
-            }
         }
+        
 
 
 

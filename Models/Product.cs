@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POSSEDQI.Entities
+namespace POSSEDQI.Models
 {
     public class Product
     {
