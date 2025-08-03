@@ -16,7 +16,6 @@
                  LostFocus="CategoryNameTextBox_LostFocus"/>
 
         <Button Grid.Row="1" Content="حفظ" Width="100" Height="60" FontSize="28" Background="Green"
-                HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"
-                Click="SaveButton_Click"/>
+                HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
     </Grid>
 </Window>

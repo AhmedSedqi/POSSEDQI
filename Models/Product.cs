@@ -18,10 +18,10 @@ namespace POSSEDQI.Entities
         public string? Description { get; set; }
 
         [Required]
-        public double Quantity { get; set; }  // الكمية يمكن أن تكون عشرية
+        public decimal Quantity { get; set; }  // الكمية يمكن أن تكون عشرية
 
         [Required]
-        public double Price { get; set; }     // الثمن
+        public decimal Price { get; set; }     // الثمن
 
         [Required]
         public int CategoryId { get; set; }   // مفتاح خارجي للفئة

@@ -44,7 +44,7 @@
 
                     <!-- زر "إضافة الفئة" -->
                     <Button Grid.Column="2" x:Name="AddCategoryButton" Content="إضافة" Margin="5,2" Padding="5,2"
-                            Background="Green" Click="AddCategoryButton_Click"
+                            Background="Green" 
                             FontSize="14" Foreground="White" FontWeight="Bold" Height="30"
                             VerticalAlignment="Center"/>
                 </Grid>

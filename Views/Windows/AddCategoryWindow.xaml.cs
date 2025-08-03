@@ -21,33 +21,11 @@ namespace POSSEDQI.Views.Windows
     /// </summary>
     public partial class AddCategoryWindow : Window
     {
-        private readonly CategoryService _categoryService;
 
         public AddCategoryWindow()
         {
             InitializeComponent();
-            _categoryService = new CategoryService();
         }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            var name = CategoryNameTextBox.Text.Trim();
-
-            if (string.IsNullOrEmpty(name))
-            {
-                MessageBox.Show("يرجى إدخال اسم الفئة.", "تنبيه", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var newCategory = new Category { Name = name };
-            _categoryService.AddCategory(newCategory);
-
-            MessageBox.Show("تمت إضافة الفئة بنجاح.", "نجاح", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            this.DialogResult = true; // إشارة نجاح وإغلاق النافذة
-            this.Close();
-        }
-
         private void CategoryNameTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if (CategoryNameTextBox.Text == "اسم الفئة")
@@ -65,6 +43,8 @@ namespace POSSEDQI.Views.Windows
                 CategoryNameTextBox.Foreground = System.Windows.Media.Brushes.Gray;
             }
         }
+
+
 
     }
 }
