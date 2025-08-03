@@ -4,6 +4,7 @@ using POSSEDQI.Services;
 using POSSEDQI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,16 @@ namespace POSSEDQI.Views.Windows
                                                      
 
         }
-        
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(((AddCategoryViewModel)DataContext).CategoryName))
+            {
+                MessageBox.Show("لم يتم إدخال اسم الفئة!", "تحذير",
+                              MessageBoxButton.OK, MessageBoxImage.Warning);
+                e.Cancel = true;
+            }
+        }
 
 
     }

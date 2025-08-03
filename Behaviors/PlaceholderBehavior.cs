@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
+using System.ComponentModel;
 namespace POSSEDQI.Behaviors
 {
     public static class PlaceholderBehavior
@@ -23,16 +23,23 @@ namespace POSSEDQI.Behaviors
         {
             if (d is not TextBox textBox) return;
 
-            // إزالة المعالجات القديمة أولاً لمنع التكرار
+            // إزالة المعالجات القديمة لمنع التكرار
             textBox.GotFocus -= RemovePlaceholder;
             textBox.LostFocus -= ShowPlaceholder;
+            textBox.Loaded -= InitializePlaceholder;
 
             // إضافة المعالجات الجديدة
             textBox.GotFocus += RemovePlaceholder;
             textBox.LostFocus += ShowPlaceholder;
+            textBox.Loaded += InitializePlaceholder;
 
-            // تطبيق النص الافتراضي فوراً
-            if (string.IsNullOrEmpty(textBox.Text))
+            // التهيئة الفورية
+            InitializePlaceholder(textBox, null);
+        }
+
+        private static void InitializePlaceholder(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && string.IsNullOrEmpty(textBox.Text))
             {
                 textBox.Text = GetPlaceholderText(textBox);
                 textBox.Foreground = Brushes.Gray;

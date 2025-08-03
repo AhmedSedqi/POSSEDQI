@@ -1,29 +1,33 @@
-﻿using POSSEDQI.Services;
-using POSSEDQI.Helpers;
+﻿using POSSEDQI.Helpers;
 using POSSEDQI.Models;
-using System.Behaviors;
+using POSSEDQI.Services;
+using System.ComponentModel; // أضف هذا السطر
 using System.Windows.Input;
+using System.Windows; // لـ MessageBox
+
 
 namespace POSSEDQI.ViewModels
 {
-    public class AddCategoryViewModel
+    public class AddCategoryViewModel : INotifyPropertyChanged // أضف هذه الواجهة
     {
         private readonly CategoryService _categoryService;
+        private string _categoryName = string.Empty; // تأكيد على قيمة فارغة
 
-        // خاصية لربطها مع TextBox في الواجهة
-        private string _categoryName = ""; // تأكد من تهيئته كسلسلة فارغة
+        public event PropertyChangedEventHandler PropertyChanged; // جزء من الواجهة
 
         public string CategoryName
         {
             get => _categoryName;
             set
             {
-                _categoryName = value;
-                OnPropertyChanged(nameof(CategoryName));
+                if (_categoryName != value)
+                {
+                    _categoryName = value;
+                    OnPropertyChanged(nameof(CategoryName));
+                }
             }
         }
 
-        // الأمر الخاص بالحفظ
         public ICommand SaveCommand { get; }
 
         public AddCategoryViewModel()
@@ -32,23 +36,39 @@ namespace POSSEDQI.ViewModels
             SaveCommand = new RelayCommand(SaveCategory, CanSaveCategory);
         }
 
-        // دالة الحفظ
+        // دالة مساعدة لتنبيه الواجهة بالتغييرات
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private void SaveCategory(object parameter)
         {
-            var newCategory = new Category { Name = CategoryName };
+            // التحقق من التكرار أولاً
+            if (_categoryService.CategoryExists(CategoryName))
+            {
+                MessageBox.Show("هذه الفئة موجودة بالفعل!", "تحذير",
+                              MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var newCategory = new Category { Name = CategoryName.Trim() };
             _categoryService.AddCategory(newCategory);
 
-            // إغلاق النافذة بعد الحفظ (سنربطها لاحقًا)
-            if (parameter is System.Windows.Window window)
+            if (parameter is Window window)
+            {
+                window.DialogResult = true;
                 window.Close();
+            }
         }
 
-
-
-        // التحقق من إمكانية التنفيذ
         private bool CanSaveCategory(object parameter)
         {
-            return !string.IsNullOrWhiteSpace(CategoryName);
+            return !string.IsNullOrWhiteSpace(CategoryName) &&
+                  !CategoryName.Equals("اسم الفئة") &&
+                  !CategoryName.Trim().Equals("");
         }
+
+
     }
 }

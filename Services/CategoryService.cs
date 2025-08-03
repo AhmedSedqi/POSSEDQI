@@ -43,5 +43,12 @@ namespace POSSEDQI.Services
             _context.Categories.Remove(category);
             _context.SaveChanges();
         }
+
+        //التحقق من وجود فئة
+        public bool CategoryExists(string categoryName)
+        {
+            return _context.Categories
+                .Any(c => c.Name.ToLower().Trim() == categoryName.ToLower().Trim());
+        }
     }
 }
