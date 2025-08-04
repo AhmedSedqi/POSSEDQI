@@ -1,7 +1,10 @@
 ﻿using POSSEDQI.Helpers;
 using POSSEDQI.Models;
 using POSSEDQI.Services;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
 
@@ -13,7 +16,7 @@ namespace POSSEDQI.ViewModels
         private readonly CategoryService _categoryService;
         private readonly ImageService _imageService;
 
-        // الخصائص المعدلة - التهيئة الفارغة أساسية
+        // الخصائص مع تهيئة فارغة
         private string _productName = string.Empty;
         private string _description = string.Empty;
         private string _purchasePrice = string.Empty;
@@ -117,7 +120,7 @@ namespace POSSEDQI.ViewModels
         {
             if (obj is Window window)
             {
-                window.DialogResult = false; // تم التغيير إلى false للإلغاء
+                window.DialogResult = false;
                 window.Close();
             }
         }
@@ -142,18 +145,22 @@ namespace POSSEDQI.ViewModels
 
         private void SaveProduct(object parameter)
         {
-            // التحقق من صحة السعر
-            if (!decimal.TryParse(PurchasePrice, out decimal price) || price <= 0)
+            // تحويل الفواصل إلى نقاط للتحقق من الأرقام
+            string normalizedPrice = PurchasePrice?.Replace(',', '.');
+            string normalizedQuantity = Quantity?.Replace(',', '.');
+
+            // التحقق من صحة السعر (يقبل 1.5 أو 1,5)
+            if (!decimal.TryParse(normalizedPrice, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal price) || price <= 0)
             {
-                MessageBox.Show("يجب أن يكون ثمن الشراء رقمًا موجبًا", "خطأ في المدخلات",
+                MessageBox.Show("يجب أن يكون ثمن الشراء رقمًا موجبًا (يمكن استخدام . أو , للكسور العشرية)", "خطأ في المدخلات",
                               MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            // التحقق من صحة الكمية (عدد عشري غير سالب)
-            if (!decimal.TryParse(Quantity, out decimal quantity) || quantity < 0)
+            // التحقق من صحة الكمية (يقبل 1.5 أو 1,5)
+            if (!decimal.TryParse(normalizedQuantity, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal quantity) || quantity < 0)
             {
-                MessageBox.Show("يجب أن تكون الكمية رقمًا عشريًا موجبًا (مثال: 1.5)", "خطأ في المدخلات",
+                MessageBox.Show("يجب أن تكون الكمية رقمًا عشريًا موجبًا (يمكن استخدام . أو , للكسور العشرية)", "خطأ في المدخلات",
                               MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -169,15 +176,14 @@ namespace POSSEDQI.ViewModels
                 ImagePath = string.IsNullOrWhiteSpace(ImagePath) ? "/Images/default.png" : ImagePath
             };
 
-            // محاولة الحفظ
             try
             {
                 _productService.AddProduct(newProduct);
 
-                // إغلاق النافذة بنجاح مع إعادة تعيين الحقول
+                // إغلاق النافذة بعد الحفظ الناجح
                 if (parameter is Window window)
                 {
-                    // إعادة تعيين الخصائص
+                    // إعادة تعيين الحقول
                     ProductName = string.Empty;
                     Description = string.Empty;
                     PurchasePrice = string.Empty;
