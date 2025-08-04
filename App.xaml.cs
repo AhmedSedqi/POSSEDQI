@@ -1,7 +1,8 @@
-﻿using System.Configuration;
+﻿using POSSEDQI.Data;
+using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Windows;
-using POSSEDQI.Data;
 
 
 namespace POSSEDQI
@@ -19,8 +20,26 @@ namespace POSSEDQI
             {
                 db.Database.EnsureCreated(); // ينشئ القاعدة إذا لم تكن موجودة
             }
+
+            // إنشاء مجلد الصور إذا لم يكن موجوداً
+            var imagesDir = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+            if (!Directory.Exists(imagesDir))
+            {
+                Directory.CreateDirectory(imagesDir);
+            }
+
+            // نسخ الصورة الافتراضية إذا لم تكن موجودة
+            var defaultImage = Path.Combine(imagesDir, "default.png");
+            if (!File.Exists(defaultImage))
+            {
+                // هنا يمكنك نسخ صورة افتراضية من مواردك
+            }
+
+            base.OnStartup(e);
         }
     }
+
+
 
     
 

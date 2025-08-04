@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace POSSEDQI.Services
 {
@@ -20,7 +21,15 @@ namespace POSSEDQI.Services
         // جلب كل الفئات
         public List<Category> GetAllCategories()
         {
-            return _context.Categories.ToList();
+            try
+            {
+                return _context.Categories.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطأ في جلب الفئات: {ex.Message}");
+                return new List<Category>();
+            }
         }
 
         // إضافة فئة جديدة

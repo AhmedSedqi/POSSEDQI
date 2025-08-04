@@ -28,7 +28,7 @@ namespace POSSEDQI.Models
 
         public Category? Category { get; set; } // علاقة بالفئة
 
-        public string ImagePath { get; set; } // مسار الصورة للمنتج
+        public string ImagePath { get; set; } = "/Images/default.png"; // قيمة افتراضية
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using POSSEDQI.Services;
+using POSSEDQI.ViewModels;
 using POSSEDQI.Views.Windows;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,11 @@ namespace POSSEDQI.Views
         public InventoryView()
         {
             InitializeComponent();
+            DataContext = new InventoryViewModel();
+
 
         }
-        
+
 
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
