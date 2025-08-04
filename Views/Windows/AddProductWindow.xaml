@@ -95,7 +95,7 @@
                     Command="{Binding SelectImageCommand}"/>
             <Button Content="حفظ" Width="100" Height="35" Margin="10,0,10,0" FontSize="20" FontWeight="Bold"
                     Background="#07e81d" Foreground="White" VerticalContentAlignment="Center"
-                    Command="{Binding SaveCommand}"/>
+                    Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
         </StackPanel>
     </Grid>
 </Window>

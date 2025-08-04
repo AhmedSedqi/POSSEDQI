@@ -117,47 +117,82 @@ namespace POSSEDQI.ViewModels
         {
             if (obj is Window window)
             {
+                window.DialogResult = false; // تم التغيير إلى false للإلغاء
                 window.Close();
             }
         }
 
         private bool CanSaveProduct(object parameter)
         {
-            return !string.IsNullOrWhiteSpace(ProductName) &&
-                   !ProductName.Equals("أدخل اسم المنتج") &&
-                   !string.IsNullOrWhiteSpace(PurchasePrice) &&
-                   !PurchasePrice.Equals("أدخل ثمن الشراء") &&
-                   !string.IsNullOrWhiteSpace(Quantity) &&
-                   !Quantity.Equals("أدخل الكمية المتاحة") &&
-                   SelectedCategory != null;
+            bool isValid = !string.IsNullOrWhiteSpace(ProductName) &&
+                          !string.IsNullOrWhiteSpace(PurchasePrice) &&
+                          !string.IsNullOrWhiteSpace(Quantity) &&
+                          SelectedCategory != null;
+
+            // تحقق إضافي لمنع النصوص النائبة
+            if (isValid)
+            {
+                isValid = !ProductName.Equals("أدخل اسم المنتج") &&
+                         !PurchasePrice.Equals("أدخل ثمن الشراء") &&
+                         !Quantity.Equals("أدخل الكمية المتاحة");
+            }
+
+            return isValid;
         }
 
         private void SaveProduct(object parameter)
         {
-            if (!decimal.TryParse(PurchasePrice, out decimal price) ||
-                !int.TryParse(Quantity, out int quantity))
+            // التحقق من صحة السعر
+            if (!decimal.TryParse(PurchasePrice, out decimal price) || price <= 0)
             {
-                MessageBox.Show("الرجاء إدخال قيم صحيحة للسعر والكمية", "خطأ",
+                MessageBox.Show("يجب أن يكون ثمن الشراء رقمًا موجبًا", "خطأ في المدخلات",
                               MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // التحقق من صحة الكمية (عدد عشري غير سالب)
+            if (!decimal.TryParse(Quantity, out decimal quantity) || quantity < 0)
+            {
+                MessageBox.Show("يجب أن تكون الكمية رقمًا عشريًا موجبًا (مثال: 1.5)", "خطأ في المدخلات",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // إنشاء المنتج الجديد
             var newProduct = new Product
             {
-                Name = ProductName,
-                Description = Description,
+                Name = ProductName.Trim(),
+                Description = Description?.Trim(),
                 Price = price,
                 Quantity = quantity,
                 CategoryId = SelectedCategory.CategoryId,
-                ImagePath = ImagePath
+                ImagePath = string.IsNullOrWhiteSpace(ImagePath) ? "/Images/default.png" : ImagePath
             };
 
-            _productService.AddProduct(newProduct);
-
-            if (parameter is Window window)
+            // محاولة الحفظ
+            try
             {
-                window.DialogResult = true;
-                window.Close();
+                _productService.AddProduct(newProduct);
+
+                // إغلاق النافذة بنجاح مع إعادة تعيين الحقول
+                if (parameter is Window window)
+                {
+                    // إعادة تعيين الخصائص
+                    ProductName = string.Empty;
+                    Description = string.Empty;
+                    PurchasePrice = string.Empty;
+                    Quantity = string.Empty;
+                    SelectedCategory = null;
+                    ImagePath = "/Images/default.png";
+
+                    window.DialogResult = true;
+                    window.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء الحفظ: {ex.Message}", "خطأ",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
