@@ -165,11 +165,11 @@ namespace POSSEDQI.ViewModels
                 return;
             }
 
-            // إنشاء المنتج الجديد
+            // إنشاء المنتج الجديد مع التعامل الصحيح مع الوصف الاختياري
             var newProduct = new Product
             {
                 Name = ProductName.Trim(),
-                Description = Description?.Trim(),
+                Description = string.IsNullOrWhiteSpace(Description) ? null : Description.Trim(), // هذا هو السطر المعدل
                 Price = price,
                 Quantity = quantity,
                 CategoryId = SelectedCategory.CategoryId,
@@ -185,7 +185,7 @@ namespace POSSEDQI.ViewModels
                 {
                     // إعادة تعيين الحقول
                     ProductName = string.Empty;
-                    Description = string.Empty;
+                    Description = string.Empty; // سيتم مسح الحقل
                     PurchasePrice = string.Empty;
                     Quantity = string.Empty;
                     SelectedCategory = null;
