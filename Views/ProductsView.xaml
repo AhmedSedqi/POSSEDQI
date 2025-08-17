@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="POSSEDQI.Views.ProductsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:POSSEDQI.Controls">
+
+    <Grid>
+        <!-- شريط الفلترة -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <ComboBox x:Name="CategoryFilter" Width="200" Margin="0,0,10,0"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"/>
+            <Button Content="تصفية" Width="80" Click="FilterProducts"/>
+        </StackPanel>
+
+        <!-- قائمة المنتجات -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="ProductsList">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:ProductCardControl 
+                            Margin="0,0,10,10"
+                            CurrentProduct="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

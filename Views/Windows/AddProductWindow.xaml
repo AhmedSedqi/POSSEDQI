@@ -38,17 +38,17 @@
                          Margin="0,0,0,5" Height="30"/>
 
                 <!-- الوصف -->
-                <Label Content="وصف المنتج اختياري:"  HorizontalContentAlignment="Right" 
+                <Label Content="اكتب وصفا للمنتج إن أردت"  HorizontalContentAlignment="Right" 
                        Margin="0,5,10,0" FontSize="16" FontWeight="Bold"/>
                 <TextBox x:Name="DescriptionTextBox" HorizontalContentAlignment="Right" FontSize="16" FontWeight="Bold"
-                         VerticalContentAlignment="Center"
+                         VerticalContentAlignment="Top" Background="#b3bdbc"
                          Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                          Foreground="Black"
                          Margin="0,0,0,5" Height="60"
                          AcceptsReturn="True" TextWrapping="Wrap"/>
 
                 <!-- ثمن الشراء -->
-                <Label Content="ثمن الشراء:" HorizontalContentAlignment="Right" 
+                <Label Content="ثمن الشراء" HorizontalContentAlignment="Right" 
                        Margin="0,5,10,0" FontSize="16" FontWeight="Bold"/>
                 <TextBox x:Name="PurchasePriceTextBox" HorizontalContentAlignment="Right" FontSize="16" FontWeight="Bold"
                          VerticalContentAlignment="Center"
@@ -58,7 +58,7 @@
                          Margin="0,0,0,5" Height="30"/>
 
                 <!-- الكمية -->
-                <Label Content="الكمية:" HorizontalContentAlignment="Right" 
+                <Label Content="الكمية" HorizontalContentAlignment="Right" 
                        Margin="0,5,10,0" FontSize="16" FontWeight="Bold"/>
                 <TextBox x:Name="QuantityTextBox" HorizontalContentAlignment="Right" FontSize="16" FontWeight="Bold"
                          VerticalContentAlignment="Center"
@@ -68,7 +68,7 @@
                          Margin="0,0,0,5" Height="30"/>
 
                 <!-- الفئة -->
-                <Label Content="الفئة:" HorizontalContentAlignment="Right" 
+                <Label Content="اختر فئة المنتج" HorizontalContentAlignment="Right" 
                        Margin="0,5,10,0" FontSize="16" FontWeight="Bold"/>
                 <ComboBox x:Name="CategoryComboBox" HorizontalContentAlignment="Right" FontSize="16" FontWeight="Bold"
                          VerticalContentAlignment="Center"

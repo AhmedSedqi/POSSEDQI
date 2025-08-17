@@ -1,9 +1,32 @@
 ﻿<Application x:Class="POSSEDQI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:POSSEDQI"
+             xmlns:local="clr-namespace:POSSEDQI.Helpers"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!-- ظل البطاقة -->
+        <DropShadowEffect x:Key="CardShadow" BlurRadius="10" 
+                      ShadowDepth="2" Opacity="0.1"/>
+
+        <!-- زر مسطح -->
+        <Style x:Key="FlatButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="12">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- محول الوصف إلى Visibility -->
+        <local:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+
     </Application.Resources>
 </Application>

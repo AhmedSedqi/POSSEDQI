@@ -46,6 +46,11 @@ namespace POSSEDQI.Services
             _context.SaveChanges();
         }
 
+        public IEnumerable<Product> GetProductsByCategory(int categoryId)
+        {
+            return _context.Products.Where(p => p.CategoryId == categoryId).ToList();
+        }
+
         // يمكنك إضافة المزيد من الوظائف حسب الحاجة (بحث، تصفية، إلخ)
     }
 }
