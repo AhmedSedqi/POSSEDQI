@@ -24,7 +24,7 @@
                     <DataTemplate>
                         <controls:ProductCardControl 
                             Margin="0,0,10,10"
-                            CurrentProduct="{Binding}"/>
+                            Product="{Binding}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

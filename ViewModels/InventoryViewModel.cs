@@ -1,6 +1,9 @@
 ﻿using POSSEDQI.Helpers;
+using POSSEDQI.Models;
 using POSSEDQI.Services;
 using POSSEDQI.Views.Windows;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -31,6 +34,15 @@ namespace POSSEDQI.ViewModels
                 MessageBox.Show("تمت إضافة المنتج بنجاح!", "نجاح",
                               MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        public ObservableCollection<Product> Products { get; set; }
+
+        public async Task LoadProducts()
+        {
+            var products = await _productService.GetAllProducts();
+            Products = new ObservableCollection<Product>(products);
+            OnPropertyChanged(nameof(Products));
         }
     }
 }

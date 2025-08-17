@@ -18,19 +18,20 @@ namespace POSSEDQI.Controls
 {
     public partial class ProductCardControl : UserControl
     {
-        // تعريف خاصية CurrentProduct
-        public static readonly DependencyProperty CurrentProductProperty =
-            DependencyProperty.Register("CurrentProduct", typeof(Product), typeof(ProductCardControl));
+        // تعريف خاصية Product
+        public static readonly DependencyProperty ProductProperty =
+        DependencyProperty.Register("Product", typeof(Product), typeof(ProductCardControl));
 
-        public Product CurrentProduct
+        public Product Product
         {
-            get => (Product)GetValue(CurrentProductProperty);
-            set => SetValue(CurrentProductProperty, value);
+            get => (Product)GetValue(ProductProperty);
+            set => SetValue(ProductProperty, value);
         }
 
         public ProductCardControl()
         {
             InitializeComponent();
+
         }
     }
 }
